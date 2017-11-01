@@ -25,32 +25,7 @@ function getSourceOperation($token)
 }
 
 
-// METHOD TO GET SOLDE
-function getSolde($telClient)
-{
-	try{	
-		
-		$response = callService("/GetWalletDetails", array(
 
-					"wallet" => $telClient
-									
-			), "2.0");
-			
-			// no error
-			if($response->WALLET->BAL != null)
-			{
-				
-				return $response->WALLET->BAL;
-	
-			}
-			else return false;
-			
-	}
-	catch(Exception $e)
-	{
-		 return false;
-	}
-}
 
 
 ////////////// MAIN
