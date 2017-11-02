@@ -87,7 +87,7 @@ function check_moneyOut($transID, $token)
 			fputs($file, "a\n");
 			fclose($file);
 			
-		if(verifyStatusOUT($token))
+		if(verifyStatusOUT($transID))
 		{	$file = fopen("nxvision.txt", "a+");
 			fputs($file, "b\n");
 			fclose($file);
