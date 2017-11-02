@@ -85,7 +85,7 @@ function check_moneyOut($transID, $token)
 	fputs($file, "----------GO--------\n");
 	fputs($file, "aaaaaaaaaaaa \n");
 	fputs($file, $transID);
-	/*fputs($file, "token: ".$token."\n");*/
+	fputs($file, "\n  ".$token."\n");
 	fclose($file);
 
 	if(!empty($transID))

@@ -67,10 +67,10 @@ function call_MoneyOut($amountTot, $token, $wallet, $comment)
 			if($response->TRANS != null)
 			{
 				// add transaction ID inside BDD
-				update_Operation($token, "en cours ".$response->TRANS->ID);
+				update_Operation($token, "en cours ".$response->TRANS->HPAY->ID);
 				
 				// on vérifie le succès				
-				if(check_moneyOut($response->TRANS->ID, $token))
+				if(check_moneyOut($response->TRANS->HPAY->ID, $token))
 				{
 					return json_encode(array('success' => $response));
 				}
