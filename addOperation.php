@@ -1,7 +1,7 @@
 <?php 
 
 	require_once "./LemonWay.php";
-	require_once "./return_successOUT.php";
+	require_once "./checkTrans.php";
 	
 
 
@@ -86,7 +86,7 @@ function call_MoneyOut($amountTot, $token, $wallet, $comment)
 
 
 // -------------------------------------------------------- call service - sendPayment
-function call_sendPayment($source, $target, $amount, $comment)
+function call_sendPayment($source, $target, $amount, $token, $comment)
 {
 	try
 	{	
@@ -99,7 +99,21 @@ function call_sendPayment($source, $target, $amount, $comment)
 									
 			), "1.0");
 			
-			return json_encode(array('success'=>$response));
+			// no error
+			if($response->TRANS_SENDPAYMENT != null)
+			{
+				// add transaction ID inside BDD
+				update_Operation($token, "en cours ".$response->TRANS->HPAY->ID);
+				
+				// on vérifie le succès				
+				if(check_PtoP($response->TRANS_SENDPAYMENT->HPAY->ID, $token))
+				{
+					return json_encode(array('success' => $response));
+				}
+				else return json_encode(array('error' => "erreur BDD"));
+	
+			}
+			else return json_encode(array('error' => "erreur LemonWay"));
 	}
 	catch(Exception $e)
 	{
@@ -146,7 +160,7 @@ function call_sendPayment($source, $target, $amount, $comment)
 				
 				// P2P
 				case "P2P":
-					echo call_sendPayment($source, $target, $amountTot, $comment);
+					echo call_sendPayment($source, $target, $amountTot, $wkToken, $comment);
 				break;
 			}
 			
