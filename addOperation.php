@@ -11,10 +11,6 @@
 // -------------------------------------------------------- call service - MoneyInWebInit
 function call_MoneyInWebInit($amountTot, $token, $wallet, $comment)
 {
-	
-//	$file = fopen("nxvision.txt", "a+");
-//	fputs($file, "----- ". $commission);
-//	fclose($file);
 	try
 	{	
 		$response = callService("/MoneyInWebInit", array(
@@ -103,7 +99,7 @@ function call_sendPayment($source, $target, $amount, $comment)
 									
 			), "1.0");
 			
-			json_encode(array('success'=>$response));
+			return json_encode(array('success'=>$response));
 	}
 	catch(Exception $e)
 	{
