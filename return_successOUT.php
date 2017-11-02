@@ -97,19 +97,12 @@ function check_moneyOut($transID, $token)
 				
 			if(!empty($telClient))
 			{
-				$file = fopen("nxvision.txt", "a+");
-			fputs($file, $telClient."\n");
-			fclose($file);
 				// 3) actualise le solde du client
 				// 3.a récupère l'ancien solde
 				$solde = getSolde($telClient->source);
-				$file = fopen("nxvision.txt", "a+");
-			fputs($file, $solde."\n");
-			fclose($file);
+			
 				if($solde != false)
-				{$file = fopen("nxvision.txt", "a+");
-			fputs($file, "e\n");
-			fclose($file);
+				{
 					try
 					{
 						require "./database.php";
