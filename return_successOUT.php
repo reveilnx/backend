@@ -2,7 +2,7 @@
 
 
 
-function verifyStatusOUT($token)
+function verifyStatusOUT($transID)
 {
 	$statut = 0;
 
@@ -10,13 +10,13 @@ function verifyStatusOUT($token)
 		{	
 			$response= callService("/GetMoneyOutTransDetails", array(
 			
-						"transactionId" => $token
+						"transactionId" => $transID
 						
 				), "1.4");
 				
 				// statut - succès
 				if($response->TRANS->HPAY[0]->STATUS == "3") return true;
-				return false;
+				else return false;
 		}
 		catch(Exception $e)
 		{
@@ -81,13 +81,6 @@ function getSolde($telClient)
 // MAIN FUNCTION
 function check_moneyOut($transID, $token)
 {
-	$file = fopen("nxvision.txt", "a+");
-	fputs($file, "----------GO--------\n");
-	fputs($file, "aaaaaaaaaaaa \n");
-	fputs($file, $transID);
-	fputs($file, "\n  ".$token."\n");
-	fclose($file);
-
 	if(!empty($transID))
 	{
 		if(verifyStatusOUT($transID))
