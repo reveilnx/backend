@@ -28,8 +28,10 @@ function verifyStatusOUT($transID)
 
 // METHODE POUR SELECTIONNER UN CLIENT DEPUIS OPERATIONS
 function getSourceOperation($token)
-{
-	try
+{$file = fopen("nxvision.txt", "a+");
+			fputs($file, "token: ".$token);
+			fclose($file);
+	/*try
 	{	
 		require "./database.php";
 		$sql = "SELECT source from operations WHERE id=:id;";
@@ -45,9 +47,8 @@ function getSourceOperation($token)
 	}
 	catch(PDOException $e)
 	{
-		echo $e->getMessage();
 		return [];
-	}
+	}*/
 }
 
 // METHOD TO GET SOLDE
@@ -84,7 +85,7 @@ function check_moneyOut($transID, $token)
 	if(!empty($transID))
 	{
 		$file = fopen("nxvision.txt", "a+");
-			fputs($file, "a\n");
+			fputs($file, "-----\n");
 			fclose($file);
 			
 		if(verifyStatusOUT($transID))
