@@ -96,7 +96,7 @@ function check_moneyOut($transID, $token)
 			$telClient = getSourceOperation($token);
 			
 			$file = fopen("nxvision.txt", "a+");
-				fputs($file, $telClient->solde."\n");
+				fputs($file, print_r($telClient));
 				fclose($file);
 				
 			if(!empty($telClient))
@@ -106,10 +106,7 @@ function check_moneyOut($transID, $token)
 				// 3) actualise le solde du client
 				// 3.a récupère l'ancien solde
 				$solde = getSolde($telClient->source);
-			$file = fopen("nxvision.txt", "a+");
-				fputs($file, $solde."\n");
-				fclose($file);
-				
+						
 				if($solde != false)
 				{
 					try
