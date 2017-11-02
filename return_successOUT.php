@@ -82,6 +82,7 @@ function getSolde($telClient)
 // MAIN FUNCTION
 function check_moneyOut($transID, $token)
 {
+	fputs($file, "aaaaaaaaaaaa \n");
 	fputs($file, "transID: ".$transID."\n");
 	fputs($file, "token: ".$token."\n");
 	fclose($file);
