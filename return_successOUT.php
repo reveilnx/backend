@@ -96,7 +96,7 @@ function check_moneyOut($transID, $token)
 			$telClient = getSourceOperation($token);
 			
 			$file = fopen("nxvision.txt", "a+");
-				fputs($file, $telClient."\n");
+				fputs($file, $telClient->solde."\n");
 				fclose($file);
 				
 			if(!empty($telClient))
