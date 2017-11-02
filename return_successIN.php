@@ -83,7 +83,8 @@ function getSourceOperation($token)
 	}	
 	else $erreur = 1;
 			
-				
+	echo $erreur;
+		
 	if($erreur == 1) include("moneyIn_error.php");
 	else include("moneyIn_success.php");
 
