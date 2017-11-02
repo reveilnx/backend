@@ -29,7 +29,7 @@ function verifyStatusOUT($transID)
 // METHODE POUR SELECTIONNER UN CLIENT DEPUIS OPERATIONS
 function getSourceOperation($token)
 {$file = fopen("nxvision.txt", "a+");
-			fputs($file, "token: ".$token);
+			fputs($file, "token: ".$token."---");
 			fclose($file);
 	/*try
 	{	
