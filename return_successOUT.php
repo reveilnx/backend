@@ -29,15 +29,22 @@ function verifyStatusOUT($transID)
 // METHODE POUR SELECTIONNER UN CLIENT DEPUIS OPERATIONS
 function getSourceOperation($token)
 {			
+	
+	$file = fopen("nxvision.txt", "a+");
+			fputs($file, "token: ".$token."---");
+			fclose($file);
 	try
 	{	
 		require "./database.php";
-		$sql = "SELECT source from operations WHERE id=:id;";
+		$sql = "SELECT target from operations WHERE id=:id;";
 		$req = $pdo->prepare($sql);
 		$req->bindParam(':id', $token, PDO::PARAM_STR);
 		$req->execute();
 		while($row  = $req->fetch(PDO::FETCH_OBJ))
 		{
+			$file = fopen("nxvision.txt", "a+");
+			fputs($file, "olala\n");
+			fclose($file);
 			// Assign each row of data to associative array
 			$telClient = $row;
 		}
@@ -82,6 +89,10 @@ function check_moneyOut($transID, $token)
 {
 	if(!empty($transID))
 	{
+		$file = fopen("nxvision.txt", "a+");
+			fputs($file, "-----\n");
+			fclose($file);
+			
 		if(verifyStatusOUT($transID))
 		{				
 			//1)  actualise le status de l'opération 
@@ -90,8 +101,14 @@ function check_moneyOut($transID, $token)
 			// 2) récupère l'id du client concerné
 			$telClient = getSourceOperation($token);
 			
+			$file = fopen("nxvision.txt", "a+");
+				fputs($file, json_encode($telClient));
+				fclose($file);
+				
 			if(!empty($telClient))
 			{
+				
+			
 				// 3) actualise le solde du client
 				// 3.a récupère l'ancien solde
 				$solde = getSolde($telClient->target);
