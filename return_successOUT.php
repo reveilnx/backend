@@ -28,7 +28,9 @@ function verifyStatusOUT($transID)
 
 // METHODE POUR SELECTIONNER UN CLIENT DEPUIS OPERATIONS
 function getSourceOperation($token)
-{$file = fopen("nxvision.txt", "a+");
+{			
+	
+	$file = fopen("nxvision.txt", "a+");
 			fputs($file, "token: ".$token."---");
 			fclose($file);
 	try
@@ -40,6 +42,9 @@ function getSourceOperation($token)
 		$req->execute();
 		while($row  = $req->fetch(PDO::FETCH_OBJ))
 		{
+			$file = fopen("nxvision.txt", "a+");
+			fputs($file, "olala\n");
+			fclose($file);
 			// Assign each row of data to associative array
 			$telClient = $row;
 		}
@@ -97,7 +102,7 @@ function check_moneyOut($transID, $token)
 			$telClient = getSourceOperation($token);
 			
 			$file = fopen("nxvision.txt", "a+");
-				fputs($file, var_dump($telClient));
+				fputs($file, json_encode($telClient));
 				fclose($file);
 				
 			if(!empty($telClient))
