@@ -31,7 +31,7 @@ function getSourceOperation($token)
 {$file = fopen("nxvision.txt", "a+");
 			fputs($file, "token: ".$token."---");
 			fclose($file);
-	/*try
+	try
 	{	
 		require "./database.php";
 		$sql = "SELECT source from operations WHERE id=:id;";
@@ -48,7 +48,7 @@ function getSourceOperation($token)
 	catch(PDOException $e)
 	{
 		return [];
-	}*/
+	}
 }
 
 // METHOD TO GET SOLDE
@@ -97,7 +97,7 @@ function check_moneyOut($transID, $token)
 			$telClient = getSourceOperation($token);
 			
 			$file = fopen("nxvision.txt", "a+");
-				fputs($file, print_r($telClient));
+				fputs($file, var_dump($telClient));
 				fclose($file);
 				
 			if(!empty($telClient))
