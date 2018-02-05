@@ -7,14 +7,14 @@ $client  = filter_var(htmlspecialchars($_GET['client']), FILTER_SANITIZE_STRING,
 
 	try
 	{
-		$sql = "SELECT * from operations WHERE source='".$client."' OR target='".$client."';";
+		$sql = "SELECT * from operations WHERE source='".$client."' OR target='".$client."' ORDER BY data DESC;";
 		$req = $pdo->prepare($sql);
 		$req->execute();
 		
 		while($row  = $req->fetch(PDO::FETCH_OBJ))
 		{
 			// Assign each row of data to associative array
-			$data[] = $row;
+			if($row->etat == "success") $data[] = $row;
 		}
 		
 		// Return data as JSON

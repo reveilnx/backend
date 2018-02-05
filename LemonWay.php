@@ -13,6 +13,7 @@ define('WEBKIT', 'https://sandbox-webkit.lemonway.fr/nxvision2/dev/');
 define('LOGIN', 'society');
 define('PASSWORD', '123456');
 define('LANGUAGE', 'fr');
+define('INFEA_SERVEUR','http://92.222.155.235:443/scripts');
 define('UA', isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'ua');
 
 /**

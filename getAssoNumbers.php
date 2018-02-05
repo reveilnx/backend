@@ -1,10 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-    require_once "./database.php";
+    
      
     // Attempt to query database table and retrieve data
-	try {
+	try {require_once "./database.php";
 		$sql = "SELECT id, nom FROM AssoEntreprise;";
 		$req = $pdo->prepare($sql);
       		$req->execute();
@@ -19,7 +19,7 @@ header("Access-Control-Allow-Origin: *");
 		echo json_encode($data);
    	}
    	catch(PDOException $e)
-   	{
+   	{echo $e->getMessage();
       		throw $e->getMessage();
    	}
    	

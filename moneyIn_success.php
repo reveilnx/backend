@@ -39,7 +39,7 @@
 <body>
 	<div>
 		<h1>Recharge Wallet - Succès</h1>
-		<p>Votre Wallet NXVision a été crédité avec succès. Vous pouvez retourner sur l'application et rafraichir un onglet pour consulter votre nouveau solde.</p>
+		<p>Votre Wallet NXVision a été crédité avec succès. Retournez sur l'application et naviguez sur une nouvelle page pour voir le montant de votre solde actuel. </p>
 	</div>
 </body>
 </html>

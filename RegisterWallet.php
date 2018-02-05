@@ -1,5 +1,7 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+
 	require_once "./LemonWay.php";
 
 	// Sanitise URL supplied values
@@ -111,7 +113,7 @@
 				$req->bindParam(':civilite', $civilite, PDO::PARAM_STR);
 				$req->bindParam(':nationalite', $nationalite, PDO::PARAM_STR);
 				$req->bindParam(':pays', $pays, PDO::PARAM_STR);
-				$req->bindParam(':adresse', $adresse, PDO::PARAM_STR);
+				$req->bindParam(':adresse', $rue, PDO::PARAM_STR);
 				$req->bindParam(':CP', $CP, PDO::PARAM_STR);
 				$req->bindParam(':ville', $ville, PDO::PARAM_STR);
 				$req->bindParam(':email', $email, PDO::PARAM_STR);
@@ -146,22 +148,22 @@
 					}		 
 					catch(PDOException $e)
 					{
-						echo json_encode(array(	'error' => $e->getMessage()));
+						echo json_encode(array(	'error BDD' => $e->getMessage()));
 					}
 				}
 				else echo json_encode(array('success'=>1));
 			}		 
 			catch(PDOException $e)
 			{
-				echo json_encode(array(	'error' => $e->getMessage()));
+				echo json_encode(array(	'error BDD' => $e->getMessage()));
 			}
 		}
-		else echo json_encode(array('error' => $response->E));
+		else echo json_encode(array('error Lemonway' => $response->E));
 	}
 	
 	catch(Exception $e)
 	{
-		echo json_encode(array(	'error' => $e->getMessage()));
+		echo json_encode(array(	'error Lemonway' => $e->getMessage()));
 	}
 	
 ?>

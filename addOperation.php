@@ -20,9 +20,9 @@ function call_MoneyInWebInit($amountTot, $token, $wallet, $comment)
 					"amountTot" => $amountTot,
 					"comment" => $comment,
 					"wkToken" => $token,
-					"returnUrl" => "http://92.91.136.106:8080/scripts/return_successIN.php",
-					"errorUrl" => "http://92.91.136.106:8080/scripts/moneyIn_error.php",
-					"cancelUrl" => "http://92.91.136.106:8080/scripts/moneyIn_error.php",
+					"returnUrl" => INFEA_SERVEUR."/return_successIN.php",
+					"errorUrl" =>  INFEA_SERVEUR."/moneyIn_error.php",
+					"cancelUrl" => INFEA_SERVEUR."/moneyIn_error.php",
 					"autoCommission" => "0"
 			), "1.3");
 			

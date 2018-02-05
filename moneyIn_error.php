@@ -1,10 +1,8 @@
 <?php 
 	require_once "./LemonWay.php";
-	echo "ERROR";
 	
 	$token = filter_var(htmlspecialchars($_GET['response_wkToken']), FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-	echo var_dump($_GET);
-	echo var_dump($token);
+
 	$state="cancel";
 	if(!empty($token))
 	{
